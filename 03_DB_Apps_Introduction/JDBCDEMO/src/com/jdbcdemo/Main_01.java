@@ -42,8 +42,7 @@ public class Main_01 {
 
         // what if string input is ( ' OR 1=1; )
         System.out.println(stmt1);
-        System.out.println(stmt1);
-        System.out.println(stmt1);
+
 
 
 //        ResultSet rs = stmt1.executeQuery();

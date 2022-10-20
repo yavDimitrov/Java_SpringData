@@ -24,23 +24,32 @@ public class Main_01 {
                 .getConnection("jdbc:mysql://127.0.0.1:3306/soft_uni", props);
 
         PreparedStatement stmt =
-                connection.prepareStatement("SELECT * FROM employees WHERE first_name = ?");
-
-        String name = sc.nextLine();
-        String formatSQL = String.format("SELECT first_name, department_id" +
-                " FROM employees WHERE first_name = %s", name);
-
-        PreparedStatement stmt1 =
                 connection.prepareStatement("SELECT first_name, department_id" +
                         " FROM employees WHERE first_name = ?");
 
+        String name = sc.nextLine();
+        String formatSQL = String.format("SELECT first_name, department_id" +
+                " FROM employees WHERE first_name = '%s'", name);
+
+        PreparedStatement stmt1 =
+                connection.prepareStatement(formatSQL);
+
 //        /*String salary = sc.nextLine();
 //        stmt.setDouble(1, Double.parseDouble(salary));*/
-        ResultSet rs = stmt.executeQuery();
+        stmt.setString(1, name);
 
-        while(rs.next()){
-            System.out.println(rs.getString("first_name") + " " + rs.getInt("department_id"));
-        }
-        connection.close();
+        System.out.println(stmt);
+
+        // what if string input is ( ' OR 1=1; )
+        System.out.println(stmt1);
+
+
+//        ResultSet rs = stmt1.executeQuery();
+//
+//        while(rs.next()){
+//            System.out.println(rs.getString("first_name") + " " + rs.getInt("department_id"));
+//        }
+//        connection.close();
+//    }
     }
 }

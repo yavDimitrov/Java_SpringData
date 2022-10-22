@@ -18,9 +18,10 @@ public class Diablo {
         System.out.println("Enter username: ");
         String username = scan.nextLine();
 
-        PreparedStatement query = connection.prepareStatement("SELECT user_name, first_name, last_name, COUNT(ug.id) AS games_count" +          " FROM users " +
-                " LEFT JOIN users_games AS ug ON users.id = ug.user_id " +
-                " WHERE user_name = ? ");
+        PreparedStatement query = connection.prepareStatement(" SELECT user_name, first_name, last_name, " +
+                " (SELECT COUNT(*) FROM users_games WHERE user_id = u.id) AS games_count" +
+                " FROM users AS u " +
+                "WHERE user_name = ?;" );
 
         query.setString(1, username);
 

@@ -8,3 +8,12 @@ FROM villains AS v
 GROUP BY mv.villain_id
 HAVING minions_count > 15
 ORDER BY minions_count;
+
+
+SELECT m.name, m.age
+FROM minions AS m
+JOIN minions_villains mv on m.id = mv.minion_id
+WHERE mv.villain_id = 1
+
+SELECT * FROM villains AS v
+WHERE v.id = ?

@@ -17,3 +17,12 @@ WHERE mv.villain_id = 1
 
 SELECT * FROM villains AS v
 WHERE v.id = ?
+
+
+04____
+
+SELECT * FROM villains
+WHERE villains.name = ?;
+
+SELECT t.id FROM towns AS t
+WHERE t.name = ?;

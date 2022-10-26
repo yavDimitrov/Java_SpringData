@@ -8,10 +8,10 @@ import java.util.Properties;
     static Connection getSQLConnection() throws SQLException {
        final Properties properties = new Properties();
 
-        properties.setProperty(Constraints.USER_KEY, Constraints.USER_VALUE);
-        properties.setProperty(Constraints.PASSWORD_KEY, Constraints.PASSWORD_VALUE);
+        properties.setProperty(Constants.USER_KEY, Constants.USER_VALUE);
+        properties.setProperty(Constants.PASSWORD_KEY, Constants.PASSWORD_VALUE);
 
-        return DriverManager.getConnection(Constraints.JDBC_URL, properties);
+        return DriverManager.getConnection(Constants.JDBC_URL, properties);
 
     }
 }

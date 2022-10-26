@@ -6,10 +6,16 @@ import java.util.Scanner;
 
 public class P06_removeVillains {
 
-    private static final String GET_VILLAIIN_BY_ID = "";
+    private static final String GET_VILLAIIN_BY_ID = "select v.name from villains v where id = ?";
+    private static final String GET_MINION_COUNT_BY_VILLAINS_ID =
+            "select (distinct mv.minion_id) m_count from minions_villains mv WHERE mv.villain_id = ?";
+    private static final String DELETE_MINIONS_VILLAINS_BY_VILLAIN_ID = "delete from minions_villains as mv where mv.villain_id = ?";
+    private static final String DELETE_VILLAIN_BY_ID = "delete from villains as v where v.id = ?";
+
+    private static final String COLOMN_LABEL_MINION_COUNT = "m_count";
     private static final String NO_SUCH_VILLAIN = "No such villain was found";
-    private static final String GET_MINION_COUNT_BY_VILLAINS_ID = "";
-    private static final String COLOMN_LABEL_MINION_COUNT = "";
+    private static final String DELETED_VILLAIN_FORMAT = "%s was deleted";
+    private static final String DELETED_COUNT_OF_MINIONS_FORMAT = "%d minions released";
 
     public static void main(String[] args) throws SQLException {
         final Connection connection = Utils.getSQLConnection();
@@ -31,12 +37,27 @@ public class P06_removeVillains {
         final PreparedStatement selectAllMinions = connection.prepareStatement(GET_MINION_COUNT_BY_VILLAINS_ID);
         selectAllMinions.setInt(1, villainId);
 
-        final ResultSet countOfminionsSet = selectAllMinions.executeQuery();
-        countOfminionsSet.next();
+        final ResultSet countOfMinionsSet = selectAllMinions.executeQuery();
+        countOfMinionsSet.next();
 
-        final int countOfDeletedMinions = countOfminionsSet.getInt(COLOMN_LABEL_MINION_COUNT);
+        final int countOfDeletedMinions = countOfMinionsSet.getInt(COLOMN_LABEL_MINION_COUNT);
 
-        try () {
+        connection.setAutoCommit(false);
+
+        try (PreparedStatement deleteMinionStatement = connection.prepareStatement(DELETE_MINIONS_VILLAINS_BY_VILLAIN_ID);
+             PreparedStatement deleteVillainStatement = connection.prepareStatement(DELETE_VILLAIN_BY_ID)) {
+
+            deleteMinionStatement.setInt(1,villainId);
+            deleteMinionStatement.executeUpdate();
+
+            deleteVillainStatement.setInt(1, villainId);
+            deleteVillainStatement.executeUpdate();
+
+            connection.commit();
+
+            System.out.printf(DELETED_VILLAIN_FORMAT, villainName);
+            System.out.printf(DELETED_COUNT_OF_MINIONS_FORMAT, countOfDeletedMinions);
+
 
         } catch (SQLException e) {
             e.printStackTrace();

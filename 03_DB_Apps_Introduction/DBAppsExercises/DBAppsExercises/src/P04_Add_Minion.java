@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-public class Add_Minion {
+public class P04_Add_Minion {
     private static final String GET_TOWN_BY_NAME = " SELECT t.id FROM towns AS t WHERE t.name = ? ";
     private static final String INSERT_INTO_TOWNS = " INSERT INTO towns(name) values(?) ";
     private static final String PRINTF_TOWN = "Town %s was added to the database.%n";
@@ -113,3 +113,5 @@ public class Add_Minion {
         return resultSet.getInt(ID_COLOMN_LABEL);
     }
 }
+
+

@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class Get_Minions_Names {
+public class P03_Get_Minions_Names {
     private static final String GET_MINION_NAME_AND_AGE_BY_VILLIAN_ID = "SELECT m.name, m.age" +
             " FROM minions AS m" +
             " JOIN minions_villains mv on m.id = mv.minion_id" +
@@ -35,7 +35,7 @@ public class Get_Minions_Names {
             return;
         }
 
-        final String villanName = villianSet.getString(Constraints.COLOMN_LABEL_NAME);
+        final String villanName = villianSet.getString(Constants.COLOMN_LABEL_NAME);
 
         System.out.printf(VILLAIN_FORMAT, villanName);
 
@@ -46,7 +46,7 @@ public class Get_Minions_Names {
         final ResultSet minionsSet = minionsStatement.executeQuery();
 
         for (int index = 1; minionsSet.next(); index++) {
-            final String minionName = minionsSet.getString(Constraints.COLOMN_LABEL_NAME);
+            final String minionName = minionsSet.getString(Constants.COLOMN_LABEL_NAME);
             final int minionAge = minionsSet.getInt(COLOMN_AGE);
 
             System.out.printf(MINIOT_FORMAT, index, minionName, minionAge);

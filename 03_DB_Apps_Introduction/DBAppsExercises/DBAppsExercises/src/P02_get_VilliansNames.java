@@ -1,7 +1,6 @@
 import java.sql.*;
-import java.util.Properties;
 
-public class get_VilliansNames {
+public class P02_get_VilliansNames {
 
     private static final String GET_VILLAINS_NAMES = "SELECT v.name, count(distinct mv.minion_id) AS minions_count" +
             " FROM villains AS v" +
@@ -22,7 +21,7 @@ public class get_VilliansNames {
         final ResultSet resultSet = statement.executeQuery();
 
         while(resultSet.next()){
-            final String villainName = resultSet.getString(Constraints.COLOMN_LABEL_NAME);
+            final String villainName = resultSet.getString(Constants.COLOMN_LABEL_NAME);
             final int minionsCount = resultSet.getInt(COLOMN_LABEL_MINIONS_COUNT);
 
             System.out.printf(PRINT_FORMAT,villainName, minionsCount);

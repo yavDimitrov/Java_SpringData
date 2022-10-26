@@ -8,14 +8,14 @@ public class P06_removeVillains {
 
     private static final String GET_VILLAIIN_BY_ID = "select v.name from villains v where id = ?";
     private static final String GET_MINION_COUNT_BY_VILLAINS_ID =
-            "select (distinct mv.minion_id) m_count from minions_villains mv WHERE mv.villain_id = ?";
+            "select COUNT(mv.minion_id) m_count from minions_villains mv WHERE mv.villain_id = ?";
     private static final String DELETE_MINIONS_VILLAINS_BY_VILLAIN_ID = "delete from minions_villains as mv where mv.villain_id = ?";
     private static final String DELETE_VILLAIN_BY_ID = "delete from villains as v where v.id = ?";
 
     private static final String COLOMN_LABEL_MINION_COUNT = "m_count";
     private static final String NO_SUCH_VILLAIN = "No such villain was found";
-    private static final String DELETED_VILLAIN_FORMAT = "%s was deleted";
-    private static final String DELETED_COUNT_OF_MINIONS_FORMAT = "%d minions released";
+    private static final String DELETED_VILLAIN_FORMAT = "%s was deleted%n";
+    private static final String DELETED_COUNT_OF_MINIONS_FORMAT = "%d minions released%n";
 
     public static void main(String[] args) throws SQLException {
         final Connection connection = Utils.getSQLConnection();

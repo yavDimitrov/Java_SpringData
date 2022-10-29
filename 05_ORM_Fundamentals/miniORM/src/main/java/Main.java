@@ -1,6 +1,6 @@
 import entities.User;
 import orm.Connector;
-import orm.entityManager;
+import orm.EntityManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ public class Main {
 
         Connection connection = Connector.getConnection();
 
-        entityManager<User> userManager = new entityManager<>(connection);
+        EntityManager<User> userManager = new EntityManager<>(connection);
         User user = new User("First", 28, LocalDate.now());
 
         userManager.persist(user);

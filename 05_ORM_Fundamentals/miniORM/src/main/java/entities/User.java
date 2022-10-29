@@ -1,7 +1,11 @@
 package entities;
 
+import orm.annotations.Entity;
+
 import java.time.LocalDate;
 
+
+@Entity(name = "users")
 public class User {
 
     private long id;

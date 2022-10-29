@@ -11,7 +11,7 @@ public class Connector {
     private static final String jdbc = "jdbc:mysql://localhost:3306/%s";
 
 
-    private static void createConnection(String user, String password, String dbName) throws SQLException {
+    public static void createConnection(String user, String password, String dbName) throws SQLException {
 
         Properties props = new Properties();
         props.setProperty("user", user);

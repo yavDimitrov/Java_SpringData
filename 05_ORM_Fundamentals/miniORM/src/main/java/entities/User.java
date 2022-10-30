@@ -1,6 +1,8 @@
 package entities;
 
+import orm.annotations.Column;
 import orm.annotations.Entity;
+import orm.annotations.Id;
 
 import java.time.LocalDate;
 
@@ -8,12 +10,16 @@ import java.time.LocalDate;
 @Entity(name = "users")
 public class User {
 
+    @Id
     private long id;
 
+    @Column(name = "user_name")
     private String username;
 
+    @Column(name = "age")
     private int age;
 
+    @Column(name = "registration_date")
     private LocalDate registration;
 
 

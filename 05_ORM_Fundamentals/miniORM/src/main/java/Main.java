@@ -18,9 +18,16 @@ public class Main {
         User user = new User("First", 28, LocalDate.now());
         userManager.persist(user);
 
-//        EntityManager<Student> studentManager = new EntityManager<>(connection);
-//        Student student = new Student("name");
-//        studentManager.persist(student);
+
+
+
+        EntityManager<Student> studentManager = new EntityManager<>(connection);
+        Student student = new Student("name");
+        studentManager.persist(student);
+
+        User first = userManager.findFirst(User.class);
+
+        System.out.println(first.getUsername());
 
     }
 }

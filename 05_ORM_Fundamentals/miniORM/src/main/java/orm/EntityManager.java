@@ -1,6 +1,5 @@
 package orm;
 
-import org.w3c.dom.css.CSSStyleRule;
 import orm.annotations.Column;
 import orm.annotations.Entity;
 
@@ -22,7 +21,7 @@ public class EntityManager<E> implements DBContext<E> {
 
     @Override
     public boolean persist(E entity) throws SQLException, IllegalAccessException {
-        String tableName = this.getTableName(entity);
+        String tableName = this.getTableName(entity.getClass());
         String fieldList = this.getDBFieldsWithoutIdentity(entity);
         String valueList = this.getValuesWithoutIdentity(entity);
 
@@ -43,22 +42,30 @@ public class EntityManager<E> implements DBContext<E> {
     }
 
     @Override
-    public Iterable findFirst() {
-        String tableName = this.getTableName(???);
+    public E findFirst(Class<E> entityType) throws SQLException {
 
-        String sql = "SELECT * FROM %s LIMIT 1";
-
-        ResultSet resultSet = this.connection.prepareStatement(sql).executeQuery();
-        return null;
+        return findFirst(entityType, null);
     }
 
     @Override
-    public Iterable findFirst(String where) {
+    public E findFirst(Class<E> entityType, String where) throws SQLException {
+        String tableName = this.getTableName(entityType);
+
+        String sql = String.format("SELECT * FROM %s %s LIMIT 1", tableName, where == null ? "" : ("WHERE" + where));
+
+        ResultSet resultSet = this.connection.prepareStatement(sql).executeQuery();
+
         return null;
+
+        return this.fillEntity(entityType, resultSet);
+
     }
 
-    private String getTableName(E entity) {
-        Entity annotation = entity.getClass().getAnnotation(Entity.class);
+    private E fillEntity(Class<E> entityType, ResultSet resultSet) {
+    }
+
+    private String getTableName(Class<?> clazz) {
+        Entity annotation = clazz.getAnnotation(Entity.class);
 
         if(annotation == null) {
             throw new ORMException("Provided class does not have Entity annotation");

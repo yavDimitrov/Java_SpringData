@@ -8,6 +8,6 @@ public interface DBContext <E>{
     Iterable<E> find();
     Iterable<E> find(String where);
 
-    Iterable<E> findFirst();
-    Iterable<E> findFirst(String where);
+    E findFirst(Class<E> entityType) throws SQLException;
+    E findFirst(Class<E> entityType,String where) throws SQLException;
 }

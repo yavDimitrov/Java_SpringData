@@ -1,5 +1,6 @@
 package orm;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
 public interface DBContext <E>{
@@ -9,5 +10,5 @@ public interface DBContext <E>{
     Iterable<E> find(String where);
 
     E findFirst(Class<E> entityType) throws SQLException;
-    E findFirst(Class<E> entityType,String where) throws SQLException;
+    E findFirst(Class<E> entityType,String where) throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException;
 }

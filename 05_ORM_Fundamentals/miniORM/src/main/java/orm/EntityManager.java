@@ -2,14 +2,18 @@ package orm;
 
 import orm.annotations.Column;
 import orm.annotations.Entity;
+import orm.annotations.Id;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class EntityManager<E> implements DBContext<E> {
@@ -48,20 +52,53 @@ public class EntityManager<E> implements DBContext<E> {
     }
 
     @Override
-    public E findFirst(Class<E> entityType, String where) throws SQLException {
+    public E findFirst(Class<E> entityType, String where) throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         String tableName = this.getTableName(entityType);
 
         String sql = String.format("SELECT * FROM %s %s LIMIT 1", tableName, where == null ? "" : ("WHERE" + where));
 
         ResultSet resultSet = this.connection.prepareStatement(sql).executeQuery();
 
-        return null;
-
-        return this.fillEntity(entityType, resultSet);
-
+        return this.createEntity(entityType, resultSet);
     }
 
-    private E fillEntity(Class<E> entityType, ResultSet resultSet) {
+    private E createEntity(Class<E> entityType, ResultSet resultSet) throws SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        if (!resultSet.next()) {
+            return null;
+        }
+        E entity = entityType.getDeclaredConstructor().newInstance();
+
+        Field[] declaredFields = entityType.getDeclaredFields();
+
+        for (Field declaredField : declaredFields) {
+            if(declaredField.isAnnotationPresent(Column.class)) {
+                String fieldName = declaredField.getAnnotation(Column.class).name();
+                String value = resultSet.getString(fieldName);
+                this.fillData(entity, declaredField, value);
+
+            } else if (declaredField.isAnnotationPresent(Id.class)) {
+                String fieldName = declaredField.getName();
+                String value = resultSet.getString(fieldName);
+                this.fillData(entity,declaredField,value);
+            }
+
+        }
+        return entity;
+    }
+
+    private E fillData(E entity, Field field,String value) throws IllegalAccessException {
+        field.setAccessible(true);
+
+        if(field.getType() == long.class || field.getType() == Long.class){
+            field.setLong(entity, Long.parseLong(value));
+        } else if (field.getType() == LocalDate.class ) {
+            field.set(entity, LocalDate.parse(value));
+        } else if (field.getType() == String.class) {
+            field.set(entity, value);
+        } else {
+            throw new ORMException("Unsupported type" + field.getType());
+        }
+        return entity;
     }
 
     private String getTableName(Class<?> clazz) {

@@ -29,6 +29,10 @@ public class User {
         this.registration = registration;
     }
 
+    public User() {
+
+    }
+
     public long getId() {
         return id;
     }

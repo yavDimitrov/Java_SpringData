@@ -45,6 +45,16 @@ public class User {
         return username;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", age=" + age +
+                ", registration=" + registration +
+                '}';
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -64,6 +74,11 @@ public class User {
     public void setRegistration(LocalDate registration) {
         this.registration = registration;
     }
+
+
+
 }
+
+
 
 

@@ -46,7 +46,7 @@ public class EntityManager<E> implements DBContext<E> {
     }
 
     @Override
-    public E findFirst(Class<E> entityType) throws SQLException {
+    public E findFirst(Class<E> entityType) throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
 
         return findFirst(entityType, null);
     }
@@ -71,17 +71,18 @@ public class EntityManager<E> implements DBContext<E> {
         Field[] declaredFields = entityType.getDeclaredFields();
 
         for (Field declaredField : declaredFields) {
-            if(declaredField.isAnnotationPresent(Column.class)) {
-                String fieldName = declaredField.getAnnotation(Column.class).name();
-                String value = resultSet.getString(fieldName);
-                this.fillData(entity, declaredField, value);
 
-            } else if (declaredField.isAnnotationPresent(Id.class)) {
-                String fieldName = declaredField.getName();
-                String value = resultSet.getString(fieldName);
-                this.fillData(entity,declaredField,value);
+            if(!declaredField.isAnnotationPresent(Column.class) &&
+            !declaredField.isAnnotationPresent(Id.class)) {
+                continue;
             }
+            Column columnAnnotation = declaredField.getAnnotation(Column.class);
 
+            String fieldName = columnAnnotation == null ?
+                    declaredField.getName() : columnAnnotation.name();
+
+            String value = resultSet.getString(fieldName);
+            entity = this.fillData(entity, declaredField, value);
         }
         return entity;
     }
@@ -91,6 +92,8 @@ public class EntityManager<E> implements DBContext<E> {
 
         if(field.getType() == long.class || field.getType() == Long.class){
             field.setLong(entity, Long.parseLong(value));
+        } else if(field.getType() == int.class || field.getType() == Integer.class){
+            field.setInt(entity, Integer.parseInt(value));
         } else if (field.getType() == LocalDate.class ) {
             field.set(entity, LocalDate.parse(value));
         } else if (field.getType() == String.class) {

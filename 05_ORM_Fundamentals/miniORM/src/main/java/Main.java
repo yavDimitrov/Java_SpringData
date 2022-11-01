@@ -28,7 +28,7 @@ public class Main {
         System.out.println(first.getId() + " " + first.getUsername());
 
         userManager.find("age > 18 AND registration_date > 2022-06-06")
-                .forEach(User::toString);
+                .forEach(u -> System.out.println(u.toString()));
 
     }
 }

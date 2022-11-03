@@ -1,4 +1,4 @@
-<?xml version= '1.0' encodig='utf-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 
     <!DOCTYPE hibernate-configuration
         PUBLIC "-//Hibernate/Hibernate Configuration DtD//EN"
@@ -12,7 +12,15 @@
         <property name="hibernate.connection.driver_class">
             com.mysql.cj.jdbc.Driver
         </property>
-        <property name=""></property>
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost:3306?school?createDatabaseInfoNotExist=true
+        </property>
+        <property name="hibernate.connection.username">
+            root
+        </property>
+        <property name="hibernate.connection.password">
+            12345
+        </property>
 
     </session-factory>
 </hibernate-configuration>

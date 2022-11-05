@@ -15,6 +15,7 @@ public class Main {
         session.beginTransaction();
 
         Student example = new Student();
+        example.setName("Toshko");
         session.persist(example);
 
         session.getTransaction().commit();

@@ -14,9 +14,14 @@ public class Main {
 
         session.beginTransaction();
 
-        Student example = new Student();
+/*        Student example = new Student();
         example.setName("Toshko");
         session.persist(example);
+
+        */
+
+        Student fromDB = session.get(Student.class, 0);
+        System.out.println(fromDB.getId() + " "  + fromDB.getName());
 
         session.getTransaction().commit();
         session.close();

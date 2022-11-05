@@ -5,7 +5,7 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
-public class Main {
+public class Hibernate_Main {
     public static void main(String[] args) {
 
         Configuration configuration = new Configuration();

@@ -21,6 +21,16 @@
         <property name="hibernate.connection.password">
             12345
         </property>
+        <property name="hibernate.transform_hbm_xml.enabled">
+            true
+        </property>
+        <property name="hbm2ddl.auto">
+            update
+        </property>
+
+
+
+        <mapping resource="student.hbm.xml" />
 
     </session-factory>
 </hibernate-configuration>

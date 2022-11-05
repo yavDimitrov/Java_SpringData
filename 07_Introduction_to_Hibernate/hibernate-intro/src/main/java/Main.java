@@ -1,3 +1,4 @@
+import entities.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -10,6 +11,16 @@ public class Main {
 
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+
+        Student example = new Student();
+        session.persist(example);
+
+        session.getTransaction().commit();
+        session.close();
+
+
 
     }
 }

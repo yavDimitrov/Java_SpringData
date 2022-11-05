@@ -15,8 +15,10 @@
                       value="12345"/>
             <property name="hibernate.transform_hbm_xml.enabled"
                       value="true"/>
-            <property name="hbm2ddl.auto"
+            <property name="hibernate.hbm2ddl.auto"
                       value="update"/>
+            <property name="hibernate.show_sql"
+                      value="true"/>
         </properties>
     </persistence-unit>
 </persistence>

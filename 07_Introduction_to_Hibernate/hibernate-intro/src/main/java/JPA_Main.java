@@ -1,7 +1,10 @@
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+
+import entities.Student;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
 import java.util.List;
 
 public class JPA_Main {
@@ -12,7 +15,11 @@ public class JPA_Main {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
 
+        Student student = new Student("Teo");
+        entityManager.persist(student);
+
 
         entityManager.getTransaction().commit();
+        entityManager.close();
     }
 }

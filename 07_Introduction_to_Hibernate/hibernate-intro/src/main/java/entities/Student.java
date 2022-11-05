@@ -1,15 +1,21 @@
 package entities;
 
 import com.mysql.cj.util.DnsSrv;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name= "students")
 public class Student {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    @Column(name = "first_name")
     private String name;
 
     public Student() {
 
+    }public Student(String name) {
+        this.name = name;
     }
 
     public int getId() {

@@ -30,7 +30,7 @@
 
 
 
-        <mapping resource="student.hbm.xml" />
+        <mapping resource="src/main/old_resoiurces/student.hbm.xmlsoiurces/student.hbm.xml" />
 
     </session-factory>
 </hibernate-configuration>

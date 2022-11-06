@@ -18,9 +18,8 @@ public class P02_changeCasing {
 
         entityManager.getTransaction().begin();
 
-       final Query towns = entityManager.createQuery("SELECT t FROM Town t", Town.class);
+       final List<Town> resultList = entityManager.createQuery("SELECT t FROM Town t", Town.class).getResultList();
 
-       final List<Town> resultList = towns.getResultList();
 
         for (Town town : resultList) {
             final String townName = town.getName();

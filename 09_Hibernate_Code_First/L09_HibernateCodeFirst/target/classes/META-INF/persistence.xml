@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
-    <persistence-unit name="school-db">
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="relations">
         <properties>
             <property name="hibernate.dialect"
                       value="org.hibernate.dialect.MySQLDialect"/>
@@ -13,12 +18,10 @@
                       value="root"/>
             <property name="hibernate.connection.password"
                       value="12345"/>
-            <property name="hibernate.transform_hbm_xml.enabled"
-                      value="true"/>
             <property name="hibernate.hbm2ddl.auto"
                       value="update"/>
             <property name="hibernate.show_sql"
                       value="true"/>
-        </properties>
+                   </properties>
     </persistence-unit>
 </persistence>

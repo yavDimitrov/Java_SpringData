@@ -1,13 +1,14 @@
 package bg.softuni.entities;
 
+import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "cars")
-public class Car extends Vehicle {
+public class Car extends PassengerVehicle {
     private static final String CAR_TYPE = "CAR";
-    private int seats;
+
 
     public Car() {
         super(CAR_TYPE);

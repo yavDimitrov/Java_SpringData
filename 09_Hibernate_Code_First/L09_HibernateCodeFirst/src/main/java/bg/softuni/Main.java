@@ -21,9 +21,15 @@ public class Main {
         Vehicle bike = new Bike();
         Vehicle plane = new Plane("Airbus", "Petrol", 200);
 
-        entityManager.persist(car);
-        entityManager.persist(bike);
-        entityManager.persist(plane);
+//        entityManager.persist(car);
+//        entityManager.persist(bike);
+//        entityManager.persist(plane);
+
+        Car fromDB = entityManager.find(Car.class, 1L);
+        System.out.println(fromDB.getId() + " " + fromDB.getModel() + " " + fromDB.getSeats());
+
+
+
 //
 //        PlateNumber number = new PlateNumber("123");
 //        Truck truck1 = new Truck(number);

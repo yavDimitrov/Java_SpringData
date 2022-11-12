@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "cars")
+@Table(name = "planes")
 public class Plane extends Vehicle {
     private static final String PLANE_TYPE = "PLANE";
     private int passengerCapacity;

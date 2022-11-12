@@ -3,7 +3,7 @@ package bg.softuni.hasEnitties;
 import jakarta.persistence.*;
 
 @Entity
-@Table( name = "has_plate_numbers")
+@Table( name = "plate_numbers")
 public class PlateNumber {
 
     @Id
@@ -14,5 +14,31 @@ public class PlateNumber {
 
     public PlateNumber() {
 
+    }
+
+    public PlateNumber(int id, String number) {
+        this.id = id;
+        this.number = number;
+    }
+
+    public PlateNumber(String s) {
+        this.number = s;
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 }

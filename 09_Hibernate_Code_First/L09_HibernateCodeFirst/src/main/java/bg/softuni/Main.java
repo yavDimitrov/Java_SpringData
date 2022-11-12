@@ -5,6 +5,8 @@ import bg.softuni.entities.Bike;
 import bg.softuni.entities.Car;
 import bg.softuni.entities.Plane;
 import bg.softuni.entities.Vehicle;
+import bg.softuni.hasEnitties.PlateNumber;
+import bg.softuni.hasEnitties.Truck;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -25,9 +27,16 @@ public class Main {
 //        entityManager.persist(bike);
 //        entityManager.persist(plane);
 
-        Car fromDB = entityManager.find(Car.class, 1L);
-        System.out.println(fromDB.getId() + " " + fromDB.getModel() + " " + fromDB.getSeats());
+//        Car fromDB = entityManager.find(Car.class, 1L);
+//        System.out.println(fromDB.getId() + " " + fromDB.getModel() + " " + fromDB.getSeats());
 
+        PlateNumber number = new PlateNumber("123");
+        Truck truck1 = new Truck(number);
+        Truck truck2 = new Truck(number);
+
+        entityManager.persist(number);
+        entityManager.persist(truck1);
+        entityManager.persist(truck2);
 
 
 //

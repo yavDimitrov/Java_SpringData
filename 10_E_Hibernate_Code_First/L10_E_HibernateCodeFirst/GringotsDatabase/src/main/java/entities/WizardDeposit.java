@@ -15,20 +15,7 @@ import javax.persistence.Id;
 @Entity
 public class WizardDeposit {
 
-    @Id
-    private long id;
 
-    @Column
-    private String firstName;
-
-    @Column
-    private String lastName;
-
-    @Column
-    private String notes;
-
-    @Column
-    private int age;
 
     @Column
     private String magic_wand_creator;
@@ -59,3 +46,4 @@ public class WizardDeposit {
 
 
 }
+

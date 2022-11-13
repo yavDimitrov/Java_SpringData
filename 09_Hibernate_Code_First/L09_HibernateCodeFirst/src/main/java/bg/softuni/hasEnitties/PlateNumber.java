@@ -12,6 +12,9 @@ public class PlateNumber {
 
     private String number;
 
+    @OneToOne(targetEntity = Truck.class, mappedBy = "plateNumber")
+    private Truck truck;
+
     public PlateNumber() {
 
     }

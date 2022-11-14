@@ -6,14 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
+@Table
 public class Wizzard {
 
     @Id
@@ -23,8 +23,7 @@ public class Wizzard {
     @Column(length = 50)
     private String firstName;
 
-    @Column(length = 60)
-    @NotNull
+    @Column(length = 60, nullable = true)
     private String lastName;
 
     @Column(length = 1000)
@@ -35,8 +34,11 @@ public class Wizzard {
     private long age;
 
     @OneToOne
-    @Column
+    @JoinColumn
     private MagicWand magicWand;
+
+    @OneToMany
+    private List<Deposit> deposits;
 
 
 }

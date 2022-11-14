@@ -8,11 +8,13 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class Wizzard() {
+public class Wizzard {
 
     @Id
     @Column
@@ -31,5 +33,10 @@ public class Wizzard() {
     @Column
     @NotNull
     private long age;
+
+    @OneToOne
+    @Column
+    private MagicWand magicWand;
+
 
 }

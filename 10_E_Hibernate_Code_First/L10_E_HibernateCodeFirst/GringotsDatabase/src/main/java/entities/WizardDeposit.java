@@ -17,11 +17,6 @@ public class WizardDeposit {
 
 
 
-    @Column
-    private String magic_wand_creator;
-
-    @Column
-    private String magic_wand_size;
 
     @Column
     private String deposit_group;

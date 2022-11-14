@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="introtohibernate" />
         <module name="GringotsDatabase" />
+        <module name="FootballBettingDatabase" />
       </profile>
     </annotationProcessing>
   </component>

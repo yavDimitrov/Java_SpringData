@@ -11,7 +11,17 @@
         <module name="P02_Sales" />
         <module name="GringotsDatabase" />
         <module name="FootballBettingDatabase" />
+        <module name="P04_HospitalDB" />
+      </profile>
+      <profile name="Annotation profile for L10_E_HibernateCodeFirst" enabled="true">
+        <sourceOutputDir name="../P06_FootballBettingDatabase/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../P06_FootballBettingDatabase/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="P05_BillsPayment" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="P03_UniversityDatabase" target="18" />
+    </bytecodeTargetLevel>
   </component>
 </project>

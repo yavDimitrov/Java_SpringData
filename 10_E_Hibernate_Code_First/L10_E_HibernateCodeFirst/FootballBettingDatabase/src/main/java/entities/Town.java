@@ -17,6 +17,8 @@ public class Town extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
+
     @ManyToOne
+    @JoinColumn(table = Town)
     private Country country;
 }

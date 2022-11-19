@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>GringotsDatabase</artifactId>
+    <groupId>bg.softuni</groupId>
+    <artifactId>P06_FootballBetting</artifactId>
 
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
@@ -42,6 +43,5 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
 
 </project>

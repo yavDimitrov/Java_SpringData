@@ -1,11 +1,9 @@
 package entities;
 
 
-import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.extern.apachecommons.CommonsLog;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -15,16 +13,16 @@ import java.math.BigInteger;
 @NoArgsConstructor
 @Entity
 @Table(name = "teams")
-public class Team extends baseEntity{
+public class Team extends BaseEntity {
 
 
-    @Column
+    @Column (nullable = false)
     private String name;
 
     @Column
     private String logo;
 
-    @Column(length = 4)
+    @Column(length = 4, nullable = false)
     private String initials;
 
     @ManyToOne

@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Color extends baseEntity{
+public class Color extends BaseEntity {
 
 
     @Column

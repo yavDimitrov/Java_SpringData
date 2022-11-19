@@ -19,6 +19,6 @@ public class Town extends BaseEntity {
 
 
     @ManyToOne
-    @JoinColumn(table = Town)
-    private Country country;
+     private Country country;
 }
+

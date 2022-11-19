@@ -5,13 +5,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @Entity
 @Table
-public class PlayerStatistics {
+public class PlayerStatistics implements Serializable {
 
     @Id
     @ManyToOne

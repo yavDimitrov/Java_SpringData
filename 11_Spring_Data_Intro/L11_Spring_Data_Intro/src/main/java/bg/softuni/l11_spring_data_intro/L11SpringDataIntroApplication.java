@@ -8,6 +8,8 @@ public class L11SpringDataIntroApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(L11SpringDataIntroApplication.class, args);
+
+
     }
 
 }

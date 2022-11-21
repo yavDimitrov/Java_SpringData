@@ -16,7 +16,7 @@ public class User {
 
     private int age;
 
-    @OneToMany
+    @OneToMany (cascade = CascadeType.ALL)
     private List<Account> accounts;
 
     public User() {

@@ -1,6 +1,7 @@
 package bg.softuni.l11_spring_data_intro.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,15 @@ public class User {
     private List<Account> accounts;
 
     public User() {
+            this.accounts = new ArrayList<>();
+    }
 
+    public User (String username, int age, Account account) {
+        this();
+
+        this.username = username;
+        this.age = age;
+        this.accounts.add(account);
     }
     public long getId() {
         return id;

@@ -16,7 +16,7 @@ public class Account {
 
 
     public Account() {
-
+        this.balance = BigDecimal.ZERO;
     }
 
     public long getId() {

@@ -40,6 +40,22 @@ public class SeedServiceImpl implements SeedService {
 
     @Override
     public void seedAuthors() throws IOException {
+      this.authorService.seedAuthors(Files.readAllLines(Path.of(RESOURCE_URL + AUTHOR_FILE_NAME))
+                    .stream()
+                    .filter(s -> !s.isBlank())
+                    .map(s -> Author.builder()
+                            .firstName(s.split(" ")[0])
+                            .lastName(s.split(" ")[1])
+                            .build()).collect(Collectors.toList()));
+
+/*            if (!this.authorService.isDataSeeded()) {
+            this.authorService.seedAuthors(Files.readAllLines(Path.of(RESOURCE_URL + AUTHOR_FILE_NAME))
+                    .stream().filter(first -> !first.isBlank())
+                    .map(firstAndLastName -> Author.builder()
+                            .firstName(firstAndLastName.split(" ")[0])
+                            .lastName(firstAndLastName.split(" ")[1])
+                            .build()).collect(Collectors.toList()));            */
+
 //        Files.readAllLines(Path.of(RESOURCE_URL + AUTHOR_FILE_NAME))
 //                .stream().filter(s -> !s.isBlank())
 //                .map(s-> {
@@ -49,13 +65,6 @@ public class SeedServiceImpl implements SeedService {
 //                            .lastName(firstAndLastName[1])
 //                            .build();
 //                });
-        if (!this.authorService.isDataSeeded()) {
-            this.authorService.seedAuthors(Files.readAllLines(Path.of(RESOURCE_URL + AUTHOR_FILE_NAME))
-                    .stream().filter(first -> !first.isBlank())
-                    .map(firstAndLastName -> Author.builder()
-                            .firstName(firstAndLastName.split(" ")[0])
-                            .lastName(firstAndLastName.split(" ")[1])
-                            .build()).collect(Collectors.toList()));
         }
     }
 

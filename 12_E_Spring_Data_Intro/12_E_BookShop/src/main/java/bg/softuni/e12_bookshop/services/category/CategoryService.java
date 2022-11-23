@@ -7,4 +7,6 @@ import java.util.List;
 public interface CategoryService {
 
     void seedCategory(List<Category> categories);
+
+    boolean isDataSeeded();
 }

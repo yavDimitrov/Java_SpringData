@@ -21,4 +21,9 @@ public class CategoryServiceImpl implements CategoryService{
     public void seedCategory(List<Category> categories) {
         this.categoryRepository.saveAll(categories);
     }
+
+    @Override
+    public boolean isDataSeeded() {
+        return this.categoryRepository.count() > 0;
+    }
 }

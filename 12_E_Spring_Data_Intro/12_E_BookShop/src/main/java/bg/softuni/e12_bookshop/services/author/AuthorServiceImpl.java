@@ -5,6 +5,7 @@ import bg.softuni.e12_bookshop.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
@@ -30,7 +31,7 @@ public class AuthorServiceImpl implements AuthorService{
     }
 
     @Override
-    public Author findByID() {
+    public Author getRandomAuthor() {
         final long count = this.authorRepository.count();
 
         if(count != 0) {
@@ -39,5 +40,10 @@ public class AuthorServiceImpl implements AuthorService{
         }
 
         throw new RuntimeException();
+    }
+
+    @Override
+    public List<Author> findDistinctByBookBefore(LocalDate date) {
+        return this.authorRepository.findDistinctByBookBefore(date).orElseThrow(NoSuchElementException::new);
     }
 }

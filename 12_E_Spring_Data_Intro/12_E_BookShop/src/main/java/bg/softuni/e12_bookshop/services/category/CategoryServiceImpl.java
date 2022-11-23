@@ -5,7 +5,7 @@ import bg.softuni.e12_bookshop.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class CategoryServiceImpl implements CategoryService{
@@ -25,5 +25,18 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public boolean isDataSeeded() {
         return this.categoryRepository.count() > 0;
+    }
+
+    @Override
+    public Set<Category> getRandomCategories() {
+
+        final long count = this.categoryRepository.count();
+
+        if(count != 0) {
+            final long randomAuthorId = new Random().nextLong(1L, count);
+            return Set.of(this.categoryRepository.findById(randomAuthorId).orElseThrow(NoSuchElementException::new));
+        }
+
+        throw new RuntimeException();
     }
 }

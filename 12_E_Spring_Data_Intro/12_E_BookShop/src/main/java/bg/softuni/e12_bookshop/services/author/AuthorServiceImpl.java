@@ -42,8 +42,15 @@ public class AuthorServiceImpl implements AuthorService{
         throw new RuntimeException();
     }
 
+
     @Override
-    public List<Author> findDistinctByBookBefore(LocalDate date) {
-        return this.authorRepository.findDistinctByBookBefore(date).orElseThrow(NoSuchElementException::new);
+    public List<Author> findDistinctByBooksReleaseDateBefore(LocalDate date) {
+        return this.authorRepository.findDistinctByBooksReleaseDateBefore(date).orElseThrow(NoSuchElementException::new);
     }
+
+/*    @Override
+    public List<Author> findAllOrderByBooks() {
+        return authorRepository.findAllGroupByBooksOrderByCount().orElseThrow(NoSuchElementException::new);
+
+    }*/
 }

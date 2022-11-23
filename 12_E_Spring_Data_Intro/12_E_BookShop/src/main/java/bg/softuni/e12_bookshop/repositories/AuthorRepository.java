@@ -13,6 +13,10 @@ import java.util.Optional;
 public interface AuthorRepository extends JpaRepository<Author, Long> {
     Optional<Author> findAuthorById(Long Id);
 
-    Optional<List<Author>> findDistinctByBookBefore(LocalDate date);
+    Optional<List<Author>> findDistinctByBooksReleaseDateBefore(LocalDate date);
+
+  //  Optional<List<Author>> findAllGroupByBooksOrderByCount();
+
+
 }
 

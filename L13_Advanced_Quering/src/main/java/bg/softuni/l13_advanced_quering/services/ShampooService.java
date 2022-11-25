@@ -11,4 +11,10 @@ public interface ShampooService {
     List<Shampoo> findByBrandAndSize(String brand, String size);
 
     List<Shampoo> findBySizeOrderById(String size);
+
+
+
+    List<Shampoo> findByIngredient(String ingredient);
+
+    List<Shampoo> findByIngredients(List<String> ingredients);
 }

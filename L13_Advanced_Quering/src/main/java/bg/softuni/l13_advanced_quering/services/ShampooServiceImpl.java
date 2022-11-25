@@ -37,4 +37,16 @@ public class ShampooServiceImpl implements ShampooService{
         return this.shampooRepository.findBySizeOrderByIdDesc(parsed);
 
     }
+
+    @Override
+    public List<Shampoo> findByIngredient(String ingredient) {
+
+        return this.shampooRepository.findByIngredient(ingredient);
+
+    }
+
+    @Override
+    public List<Shampoo> findByIngredients(List<String> ingredients) {
+        return this.shampooRepository.findByIngredients(ingredients);
+    }
 }

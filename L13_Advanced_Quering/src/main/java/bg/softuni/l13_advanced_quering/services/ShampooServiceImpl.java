@@ -74,4 +74,9 @@ public class ShampooServiceImpl implements ShampooService{
 
         return this.shampooRepository.countByPriceLessThan(parsed);
     }
+
+    @Override
+    public List<Shampoo> findWithIngredienCountLessThan(int count) {
+        return this.shampooRepository.findByIngredientCountLessThan(count);
+    }
 }

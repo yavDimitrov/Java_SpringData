@@ -37,4 +37,6 @@ public interface ShampooRepository extends JpaRepository<Shampoo, Long> {
 
     long countByPriceLessThan(BigDecimal price);
 
+    @Query("SELECT s FROM Shampoo AS s WHERE s.ingredients.size < :count ")
+    List<Shampoo> findByIngredientCountLessThan(int count);
 }

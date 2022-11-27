@@ -107,20 +107,20 @@ public class Main implements CommandLineRunner {
         for (Ingredient ingredient : this.ingredientService.selectByNames(ingredients)) {
             System.out.println(ingredient);
         } */
-
+/*    EXERCISE 07
 
         String price = scan.nextLine();
 
-//        List<String> ingredients = new ArrayList<>();
-//
-//        while(!nextLine.isBlank()) {
-//            ingredients.add(nextLine);
-//
-//            nextLine = scan.nextLine();
-//        }
+        System.out.println(this.shampooService.countWithPriceLowerThan(price));*/
+
+        int count = Integer.parseInt(scan.nextLine());
 
 
-        System.out.println(this.shampooService.countWithPriceLowerThan(price));
+        for (Shampoo shampoo : this.shampooService.findWithIngredienCountLessThan(count)) {
+            System.out.println(shampoo);
+
+
+        }
     }
 }
 

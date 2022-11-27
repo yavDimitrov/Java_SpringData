@@ -23,4 +23,6 @@ public interface ShampooService {
     List<Shampoo> findWithPriceGreaterThan(String price);
 
     long countWithPriceLowerThan(String price);
+
+    List<Shampoo> findWithIngredienCountLessThan(int count);
 }

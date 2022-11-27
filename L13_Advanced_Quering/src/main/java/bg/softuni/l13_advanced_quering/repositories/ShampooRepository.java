@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -26,4 +27,14 @@ public interface ShampooRepository extends JpaRepository<Shampoo, Long> {
     "JOIN s.ingredients AS i " +
     "WHERE i.name IN :ingredients")
     List<Shampoo> findByIngredients(List<String> ingredients);
+
+
+    List<Shampoo> findBySizeOrLabelId(Size parsed, long labelId);
+
+
+    List<Shampoo> findByPriceGreaterThanOrderByPriceDesc(BigDecimal price);
+
+
+    long countByPriceLessThan(BigDecimal price);
+
 }

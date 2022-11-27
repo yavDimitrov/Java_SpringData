@@ -5,6 +5,7 @@ import bg.softuni.l13_advanced_quering.entities.Size;
 import bg.softuni.l13_advanced_quering.repositories.ShampooRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -48,5 +49,29 @@ public class ShampooServiceImpl implements ShampooService{
     @Override
     public List<Shampoo> findByIngredients(List<String> ingredients) {
         return this.shampooRepository.findByIngredients(ingredients);
+    }
+
+    @Override
+    public List<Shampoo> findBySizeOrLabelId (String size, long labelId){
+
+        Size parsed = Size.valueOf(size.toUpperCase());
+
+
+        return this.shampooRepository.findBySizeOrLabelId(parsed, labelId);
+    }
+
+    @Override
+    public List<Shampoo> findWithPriceGreaterThan(String price) {
+        BigDecimal parsed = new BigDecimal(price);
+
+        return this.shampooRepository.findByPriceGreaterThanOrderByPriceDesc(parsed);
+    }
+
+
+    @Override
+    public long countWithPriceLowerThan(String price){
+        BigDecimal parsed = new BigDecimal(price);
+
+        return this.shampooRepository.countByPriceLessThan(parsed);
     }
 }

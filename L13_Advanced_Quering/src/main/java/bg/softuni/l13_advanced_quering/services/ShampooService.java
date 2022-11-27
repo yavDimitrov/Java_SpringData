@@ -17,4 +17,10 @@ public interface ShampooService {
     List<Shampoo> findByIngredient(String ingredient);
 
     List<Shampoo> findByIngredients(List<String> ingredients);
+
+    List<Shampoo> findBySizeOrLabelId (String size, long labelId);
+
+    List<Shampoo> findWithPriceGreaterThan(String price);
+
+    long countWithPriceLowerThan(String price);
 }

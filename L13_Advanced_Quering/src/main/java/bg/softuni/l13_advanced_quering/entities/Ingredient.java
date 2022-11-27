@@ -60,4 +60,11 @@ public class Ingredient extends BaseEntity {
         return Objects.hash(name);
     }
 
+    @Override
+    public String toString() {
+        return "Ingredient{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                               '}';
+    }
 }

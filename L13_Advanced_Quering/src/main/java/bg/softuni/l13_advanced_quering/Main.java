@@ -43,7 +43,6 @@ public class Main implements CommandLineRunner {
         }
 
         */
-
 /*
 // EXCERSISE 02
 
@@ -82,7 +81,6 @@ public class Main implements CommandLineRunner {
 
         for (Shampoo shampoo : this.shampooService.findWithPriceGreaterThan(price)) {
             System.out.println(shampoo);*/
-
 /*
      //EXERCISE 05
 
@@ -91,7 +89,6 @@ public class Main implements CommandLineRunner {
         for (Ingredient ingredient : this.ingredientService.selectByName(name)) {
             System.out.println(ingredient);
         }*/
-
 /*          EXERCISE 06
         String nextLine = scan.nextLine();
 
@@ -112,15 +109,22 @@ public class Main implements CommandLineRunner {
         String price = scan.nextLine();
 
         System.out.println(this.shampooService.countWithPriceLowerThan(price));*/
-
+/*   EXERCISE 08
         int count = Integer.parseInt(scan.nextLine());
 
 
         for (Shampoo shampoo : this.shampooService.findWithIngredienCountLessThan(count)) {
-            System.out.println(shampoo);
+            System.out.println(shampoo);*/
+/*  Exercise 10
+        String name = scan.nextLine();
 
+            this.ingredientService.deleteByName(name);*/
+
+
+
+            this.ingredientService.updatePrice();
 
         }
     }
-}
+
 

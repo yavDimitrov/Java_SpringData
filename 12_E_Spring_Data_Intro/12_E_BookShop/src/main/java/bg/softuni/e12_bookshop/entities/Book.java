@@ -45,6 +45,10 @@ public class Book extends BaseEntity{
     @ManyToMany
     private Set<Category> categories;
 
+    public String getBookTitleAndPriceFormat() {
+        return this.title + " - $" + this.price;
+    }
+
 
 }
 

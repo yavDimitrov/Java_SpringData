@@ -5,6 +5,7 @@ import bg.softuni.e12_bookshop.domain.enums.EditionType;
 import bg.softuni.e12_bookshop.entities.Author;
 import bg.softuni.e12_bookshop.entities.Book;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -20,5 +21,7 @@ public interface BookService {
     List<Book> findAllByAgeRestriction(AgeRestriction ageRestriction);
 
     List<Book> findAllByEditionTypeAndCopiesLessThan(EditionType editionType, Integer copiesNumber);
+
+    List<Book> findAllByPriceLessThanOrPriceGreaterThan(BigDecimal low, BigDecimal greater);
 
 }

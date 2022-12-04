@@ -16,6 +16,9 @@ public interface AuthorService {
 
     List<Author> findDistinctByBooksReleaseDateBefore(LocalDate date);
 
+
+    List<Author> findByFirstNameEndingWith(String suffix);
+
   //  List<Author> getAll();
 
   //  List<Author> findAllOrderByBooks();

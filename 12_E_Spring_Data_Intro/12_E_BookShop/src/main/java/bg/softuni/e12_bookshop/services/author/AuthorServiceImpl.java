@@ -48,6 +48,11 @@ public class AuthorServiceImpl implements AuthorService{
         return this.authorRepository.findDistinctByBooksReleaseDateBefore(date).orElseThrow(NoSuchElementException::new);
     }
 
+    @Override
+    public List<Author> findByFirstNameEndingWith(String suffix) {
+        return this.authorRepository.findByFirstNameEndingWith(suffix).orElseThrow(NoSuchElementException::new);
+    }
+
 /*    @Override
     public List<Author> findAllOrderByBooks() {
         return authorRepository.findAllGroupByBooksOrderByCount().orElseThrow(NoSuchElementException::new);

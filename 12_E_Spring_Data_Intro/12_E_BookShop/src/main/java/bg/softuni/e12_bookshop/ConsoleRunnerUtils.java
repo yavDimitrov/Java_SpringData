@@ -11,7 +11,10 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 @Component
 public class ConsoleRunnerUtils {
@@ -95,6 +98,13 @@ public class ConsoleRunnerUtils {
 
     // EXCERCISE 05
     public void booksReleasedBeforeDate () {
+
+        Scanner scanner = new Scanner(System.in);
+
+        final List<Integer> arg = Arrays.stream(scanner.nextLine().split("-"))
+                .map(Integer::parseInt).collect(Collectors.toList());
+
+        LocalDate loca = LocalDate.of(arg.get(2), arg.get(1), arg.get(0));
 
         this.bookService.findAllByReleaseDateBefore(LocalDate.of(1992,4,12))
                 .stream()

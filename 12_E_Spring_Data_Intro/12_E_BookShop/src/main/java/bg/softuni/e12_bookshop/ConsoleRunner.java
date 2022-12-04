@@ -2,6 +2,7 @@ package bg.softuni.e12_bookshop;
 
 import bg.softuni.e12_bookshop.domain.enums.AgeRestriction;
 import bg.softuni.e12_bookshop.domain.enums.EditionType;
+import bg.softuni.e12_bookshop.entities.Author;
 import bg.softuni.e12_bookshop.entities.Book;
 import bg.softuni.e12_bookshop.services.author.AuthorService;
 import bg.softuni.e12_bookshop.services.book.BookService;
@@ -12,8 +13,10 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 @Component
 public class ConsoleRunner implements CommandLineRunner {
@@ -34,8 +37,12 @@ public class ConsoleRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
- //       final  String arg = scanner.nextLine();
+     final  String arg = scanner.nextLine();
 
+
+    this.authorService.findByFirstNameEndingWith(arg)
+            .stream()
+            .map(Author::getFirstName).forEach(System.out::println);
 
     }
 

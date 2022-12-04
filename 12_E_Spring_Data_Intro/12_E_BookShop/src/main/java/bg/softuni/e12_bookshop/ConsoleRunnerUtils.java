@@ -9,6 +9,7 @@ import bg.softuni.e12_bookshop.services.seed.SeedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -56,6 +57,7 @@ public class ConsoleRunnerUtils {
                         + author.getLastName() + " " + author.getBooks().size()));
 
     }*/
+
     // EXCERCISE 01
     public void booksTitlesByAgeRestrictions (String ageRestrictionType) {
 
@@ -67,8 +69,7 @@ public class ConsoleRunnerUtils {
                 .map(Book::getTitle).forEach(System.out::println);
     }
 
-
-   // EXCERCISE 02
+    // EXCERCISE 02
     public void goldenBookWithLessThan5KCopies() {
 
         this.bookService.findAllByEditionTypeAndCopiesLessThan(EditionType.GOLD, 5000)
@@ -76,6 +77,32 @@ public class ConsoleRunnerUtils {
                 .map(Book::getTitle)
                 .forEach(System.out::println);
     }
+
+    // EXCERCISE 03
+   public void findAllByPriceLessThanOrPriceGreaterThan() {
+       this.bookService.findAllByPriceLessThanOrPriceGreaterThan(BigDecimal.valueOf(5L), BigDecimal.valueOf(40L))
+               .stream().map(Book::getBookTitleAndPriceFormat).forEach(System.out::println);
+
+   }
+
+    // EXCERCISE 04
+    public void notReleasedBook () {
+
+        this.bookService.findAllByReleaseDateYear(2000)
+                .stream()
+                .map(Book::getTitle).forEach(System.out::println);
+    }
+
+    // EXCERCISE 05
+    public void booksReleasedBeforeDate () {
+
+        this.bookService.findAllByReleaseDateBefore(LocalDate.of(1992,4,12))
+                .stream()
+                .map(Book::getBookTitleEditionTypeAndPriceFormat)
+                .forEach(System.out::println);
+    }
+
+
 
 
 

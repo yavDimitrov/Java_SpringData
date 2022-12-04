@@ -48,6 +48,9 @@ public class Book extends BaseEntity{
     public String getBookTitleAndPriceFormat() {
         return this.title + " - $" + this.price;
     }
+    public String getBookTitleEditionTypeAndPriceFormat() {
+        return this.title + " " + this.editionType + " " + this.price;
+    }
 
 
 }

@@ -34,12 +34,13 @@ public class ConsoleRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        final  String arg = scanner.nextLine();
+ //       final  String arg = scanner.nextLine();
 
-        this.bookService.findAllByPriceLessThanOrPriceGreaterThan(BigDecimal.valueOf(5L), BigDecimal.valueOf(40L))
-                .stream().map(Book::getBookTitleAndPriceFormat).forEach(System.out::println);
 
     }
+
+
+
 
 }
 

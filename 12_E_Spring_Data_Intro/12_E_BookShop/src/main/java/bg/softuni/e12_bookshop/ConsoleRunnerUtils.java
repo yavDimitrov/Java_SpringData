@@ -2,6 +2,7 @@ package bg.softuni.e12_bookshop;
 
 import bg.softuni.e12_bookshop.domain.enums.AgeRestriction;
 import bg.softuni.e12_bookshop.domain.enums.EditionType;
+import bg.softuni.e12_bookshop.entities.Author;
 import bg.softuni.e12_bookshop.entities.Book;
 import bg.softuni.e12_bookshop.services.author.AuthorService;
 import bg.softuni.e12_bookshop.services.book.BookService;
@@ -91,7 +92,7 @@ public class ConsoleRunnerUtils {
     // EXCERCISE 04
     public void notReleasedBook () {
 
-        this.bookService.findAllByReleaseDateYear(2000)
+        this.bookService.findAllByReleaseDateNot("2000")
                 .stream()
                 .map(Book::getTitle).forEach(System.out::println);
     }
@@ -102,7 +103,7 @@ public class ConsoleRunnerUtils {
         Scanner scanner = new Scanner(System.in);
 
         final List<Integer> arg = Arrays.stream(scanner.nextLine().split("-"))
-                .map(Integer::parseInt).collect(Collectors.toList());
+                .map(Integer::parseInt).toList();
 
         LocalDate loca = LocalDate.of(arg.get(2), arg.get(1), arg.get(0));
 
@@ -111,6 +112,24 @@ public class ConsoleRunnerUtils {
                 .map(Book::getBookTitleEditionTypeAndPriceFormat)
                 .forEach(System.out::println);
     }
+
+    // EXCERCISE 06
+    public void authorsSearch(String arg) {
+
+        this.authorService.findByFirstNameEndingWith(arg)
+                .stream()
+                .map(Author::getFullName)
+                .forEach(System.out::println);
+    }
+
+    // EXCERCISE 07
+    public void booksSearchByContainingArgument(String arg) {
+            this.bookService.findAllByTitleContaining(arg)
+                    .stream()
+                    .map(Book::getTitle)
+                    .forEach(System.out::println);
+        }
+
 
 
 

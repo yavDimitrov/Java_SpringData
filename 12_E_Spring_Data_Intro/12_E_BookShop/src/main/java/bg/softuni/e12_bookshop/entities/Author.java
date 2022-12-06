@@ -27,6 +27,13 @@ public class Author extends BaseEntity{
     @OneToMany(targetEntity = Book.class, mappedBy = "author")
     private Set<Book> books;
 
+    public String toStringWithCount() {
+        return String.format("%s %s %s", firstName, lastName, books.size());
+    }
+
+    public String getFullName() {
+        return this.firstName + " " + this.lastName;
+    }
 
 }
 

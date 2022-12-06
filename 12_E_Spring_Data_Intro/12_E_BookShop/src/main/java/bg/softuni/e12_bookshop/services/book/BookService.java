@@ -25,8 +25,10 @@ public interface BookService {
     List<Book> findAllByPriceLessThanOrPriceGreaterThan(BigDecimal low, BigDecimal greater);
 
 
-    List<Book> findAllByReleaseDateYear(Integer year);
+    List<Book> findAllByReleaseDateNot(String year);
 
     List<Book> findAllByReleaseDateBefore(LocalDate date);
+
+    List<Book> findAllByTitleContaining(String contains);
 
 }

@@ -55,13 +55,18 @@ public class BookServiceImpl implements BookService{
 
 
     @Override
-    public List<Book> findAllByReleaseDateYear(Integer year) {
-        return this.bookRepository.findAllByReleaseDateYear(year).orElseThrow(NoSuchElementException::new);
+    public List<Book> findAllByReleaseDateNot(String year) {
+        return this.bookRepository.findAllByReleaseDateStartsWith(year).orElseThrow(NoSuchElementException::new);
     }
 
     @Override
     public List<Book> findAllByReleaseDateBefore(LocalDate date) {
         return this.bookRepository.findAllByReleaseDateBefore(date).orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
+    public List<Book> findAllByTitleContaining(String contains) {
+        return this.bookRepository.findAllByTitleContaining(contains).orElseThrow(NoSuchElementException::new);
     }
 
 

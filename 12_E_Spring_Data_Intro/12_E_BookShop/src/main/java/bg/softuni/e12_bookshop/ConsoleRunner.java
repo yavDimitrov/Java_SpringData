@@ -40,11 +40,13 @@ public class ConsoleRunner implements CommandLineRunner {
      final  String arg = scanner.nextLine();
 
 
-    this.authorService.findByFirstNameEndingWith(arg)
-            .stream()
-            .map(Author::getFirstName).forEach(System.out::println);
+
 
     }
+
+
+
+
 
 
 

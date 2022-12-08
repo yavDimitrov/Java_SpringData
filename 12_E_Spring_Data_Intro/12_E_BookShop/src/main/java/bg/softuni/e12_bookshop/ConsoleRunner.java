@@ -39,12 +39,7 @@ public class ConsoleRunner implements CommandLineRunner {
 
      final  String arg = scanner.nextLine();
 
-    this.bookService.findAllByAuthorLastNameStartingWith(arg)
-            .stream()
-            .map(Book::getBookTitleandAuthorFullNameFormat)
-            .forEach(System.out::println);
-
-
+        System.out.println(this.bookService.findCountOfBooksByTitleLongerThan(Integer.parseInt(arg)));
     }
 
 

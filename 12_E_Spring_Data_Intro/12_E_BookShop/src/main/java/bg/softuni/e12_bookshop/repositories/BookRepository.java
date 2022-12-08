@@ -4,6 +4,7 @@ import bg.softuni.e12_bookshop.domain.enums.AgeRestriction;
 import bg.softuni.e12_bookshop.domain.enums.EditionType;
 import bg.softuni.e12_bookshop.entities.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.print.attribute.standard.Copies;
@@ -30,6 +31,9 @@ public interface BookRepository extends JpaRepository<Book, Long> {
         Optional<List<Book>> findAllByTitleContaining(String contains);
 
         Optional<List<Book>> findAllByAuthorLastNameStartingWith(String prefix);
+
+        @Query("SELECT count(b) FROM Book b WHERE LENGTH(b.title) > :length")
+        Optional<Integer> findCountOfBooksByTitleLongerThan(Integer length);
 
 
 

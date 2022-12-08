@@ -33,4 +33,6 @@ public interface BookService {
 
     List<Book>  findAllByAuthorLastNameStartingWith(String prefix);
 
+    Integer findCountOfBooksByTitleLongerThan(Integer length);
+
 }

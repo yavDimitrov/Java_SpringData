@@ -75,5 +75,10 @@ public class BookServiceImpl implements BookService{
                 .orElseThrow(NoSuchElementException::new);
     }
 
+    @Override
+    public Integer findCountOfBooksByTitleLongerThan(Integer length) {
+        return this.bookRepository.findCountOfBooksByTitleLongerThan(length).orElseThrow(NoSuchElementException::new);
+    }
+
 
 }

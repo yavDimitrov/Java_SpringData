@@ -69,5 +69,11 @@ public class BookServiceImpl implements BookService{
         return this.bookRepository.findAllByTitleContaining(contains).orElseThrow(NoSuchElementException::new);
     }
 
+    @Override
+    public List<Book> findAllByAuthorLastNameStartingWith(String prefix) {
+        return bookRepository.findAllByAuthorLastNameStartingWith(prefix)
+                .orElseThrow(NoSuchElementException::new);
+    }
+
 
 }

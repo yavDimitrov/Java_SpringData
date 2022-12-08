@@ -29,6 +29,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
         Optional<List<Book>> findAllByTitleContaining(String contains);
 
+        Optional<List<Book>> findAllByAuthorLastNameStartingWith(String prefix);
+
 
 
 }

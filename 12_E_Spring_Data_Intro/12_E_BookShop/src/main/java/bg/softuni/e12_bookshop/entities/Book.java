@@ -53,5 +53,10 @@ public class Book extends BaseEntity{
     }
 
 
+    public String getBookTitleandAuthorFullNameFormat() {
+        return this.title + " (" + this.author.getFullName() + ")";
+    }
+
+
 }
 

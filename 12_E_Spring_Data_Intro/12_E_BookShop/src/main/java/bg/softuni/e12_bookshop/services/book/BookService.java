@@ -31,4 +31,6 @@ public interface BookService {
 
     List<Book> findAllByTitleContaining(String contains);
 
+    List<Book>  findAllByAuthorLastNameStartingWith(String prefix);
+
 }

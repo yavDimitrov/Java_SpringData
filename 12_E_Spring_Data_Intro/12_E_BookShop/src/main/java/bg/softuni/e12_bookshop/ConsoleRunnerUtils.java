@@ -130,6 +130,16 @@ public class ConsoleRunnerUtils {
                     .forEach(System.out::println);
         }
 
+    // EXCERCISE 08
+    public void booksSearchByAuthorLastNameStartingWith(String arg) {
+
+        this.bookService.findAllByAuthorLastNameStartingWith(arg)
+                .stream()
+                .map(Book::getBookTitleandAuthorFullNameFormat)
+                .forEach(System.out::println);
+
+    }
+
 
 
 

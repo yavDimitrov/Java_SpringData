@@ -2,13 +2,11 @@ package bg.softuni.e12_bookshop.services.book;
 
 import bg.softuni.e12_bookshop.domain.enums.AgeRestriction;
 import bg.softuni.e12_bookshop.domain.enums.EditionType;
-import bg.softuni.e12_bookshop.entities.Author;
-import bg.softuni.e12_bookshop.entities.Book;
+import bg.softuni.e12_bookshop.domain.entities.Book;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 public interface BookService {
 

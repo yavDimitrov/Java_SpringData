@@ -1,22 +1,12 @@
 package bg.softuni.e12_bookshop;
 
-import bg.softuni.e12_bookshop.domain.enums.AgeRestriction;
-import bg.softuni.e12_bookshop.domain.enums.EditionType;
-import bg.softuni.e12_bookshop.entities.Author;
-import bg.softuni.e12_bookshop.entities.Book;
 import bg.softuni.e12_bookshop.services.author.AuthorService;
 import bg.softuni.e12_bookshop.services.book.BookService;
-import bg.softuni.e12_bookshop.services.seed.SeedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 @Component
 public class ConsoleRunner implements CommandLineRunner {

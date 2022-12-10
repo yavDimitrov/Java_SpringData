@@ -1,6 +1,6 @@
 package bg.softuni.e12_bookshop.services.author;
 
-import bg.softuni.e12_bookshop.entities.Author;
+import bg.softuni.e12_bookshop.domain.entities.Author;
 import bg.softuni.e12_bookshop.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

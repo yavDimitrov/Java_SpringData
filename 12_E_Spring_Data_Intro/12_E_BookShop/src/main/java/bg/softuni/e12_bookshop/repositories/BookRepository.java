@@ -1,13 +1,13 @@
 package bg.softuni.e12_bookshop.repositories;
 
+import bg.softuni.e12_bookshop.domain.dto.BookInformation;
 import bg.softuni.e12_bookshop.domain.enums.AgeRestriction;
 import bg.softuni.e12_bookshop.domain.enums.EditionType;
-import bg.softuni.e12_bookshop.entities.Book;
+import bg.softuni.e12_bookshop.domain.entities.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import javax.print.attribute.standard.Copies;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -34,6 +34,10 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
         @Query("SELECT count(b) FROM Book b WHERE LENGTH(b.title) > :length")
         Optional<Integer> findCountOfBooksByTitleLongerThan(Integer length);
+
+
+        @Query ("SELECT new.bg.softuni.domain.dto.BookInformation(b) FROM Book b WHERE b.title = :title")
+        Optional<BookInformation> findFirstByTitle(String title);
 
 
 

@@ -1,6 +1,6 @@
 package bg.softuni.e12_bookshop.services.category;
 
-import bg.softuni.e12_bookshop.entities.Category;
+import bg.softuni.e12_bookshop.domain.entities.Category;
 import bg.softuni.e12_bookshop.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

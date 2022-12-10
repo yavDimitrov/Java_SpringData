@@ -2,7 +2,7 @@ package bg.softuni.e12_bookshop.services.book;
 
 import bg.softuni.e12_bookshop.domain.enums.AgeRestriction;
 import bg.softuni.e12_bookshop.domain.enums.EditionType;
-import bg.softuni.e12_bookshop.entities.Book;
+import bg.softuni.e12_bookshop.domain.entities.Book;
 import bg.softuni.e12_bookshop.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

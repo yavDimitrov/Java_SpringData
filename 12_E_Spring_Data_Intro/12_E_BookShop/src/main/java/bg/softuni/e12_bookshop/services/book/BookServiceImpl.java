@@ -1,5 +1,6 @@
 package bg.softuni.e12_bookshop.services.book;
 
+import bg.softuni.e12_bookshop.domain.dto.BookInformation;
 import bg.softuni.e12_bookshop.domain.enums.AgeRestriction;
 import bg.softuni.e12_bookshop.domain.enums.EditionType;
 import bg.softuni.e12_bookshop.domain.entities.Book;
@@ -25,6 +26,11 @@ public class BookServiceImpl implements BookService{
     @Override
     public void seedBooks(List<Book> books) {
         this.bookRepository.saveAll(books);
+    }
+
+    @Override
+    public boolean isDataSeeded() {
+        return this.bookRepository.count() > 0;
     }
 
     @Override
@@ -78,6 +84,25 @@ public class BookServiceImpl implements BookService{
     @Override
     public Integer findCountOfBooksByTitleLongerThan(Integer length) {
         return this.bookRepository.findCountOfBooksByTitleLongerThan(length).orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
+    public BookInformation findFirstByTitle(String title) {
+
+        final BookInformation bookInformation = this.bookRepository
+                .findFirstByTitle(title)
+                .orElseThrow(NoSuchElementException::new);
+
+        System.out.println(bookInformation.toString());
+
+        return bookInformation;
+    }
+
+    @Override
+    public int IncreaseBookCopies(LocalDate date, int copies) {
+        final int count = this.bookRepository.IncreaseBookCopies(date, copies);
+        System.out.println(count * copies);
+        return count;
     }
 
 

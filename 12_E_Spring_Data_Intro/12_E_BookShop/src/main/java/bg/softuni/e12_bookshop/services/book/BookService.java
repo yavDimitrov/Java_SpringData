@@ -1,5 +1,6 @@
 package bg.softuni.e12_bookshop.services.book;
 
+import bg.softuni.e12_bookshop.domain.dto.BookInformation;
 import bg.softuni.e12_bookshop.domain.enums.AgeRestriction;
 import bg.softuni.e12_bookshop.domain.enums.EditionType;
 import bg.softuni.e12_bookshop.domain.entities.Book;
@@ -7,10 +8,13 @@ import bg.softuni.e12_bookshop.domain.entities.Book;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public interface BookService {
 
     void seedBooks(List<Book> books);
+
+    boolean isDataSeeded();
 
     List<Book> findAllByReleaseDateAfter(LocalDate date);
 
@@ -32,5 +36,10 @@ public interface BookService {
     List<Book>  findAllByAuthorLastNameStartingWith(String prefix);
 
     Integer findCountOfBooksByTitleLongerThan(Integer length);
+
+    BookInformation findFirstByTitle(String title);
+
+    int IncreaseBookCopies(LocalDate date, int copies);
+
 
 }

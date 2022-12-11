@@ -8,9 +8,9 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
 public class BookInformation {
 
     private String title;
@@ -20,6 +20,7 @@ public class BookInformation {
     private AgeRestriction ageRestriction;
 
     private BigDecimal price;
+
 
     @Override
     public String toString() {

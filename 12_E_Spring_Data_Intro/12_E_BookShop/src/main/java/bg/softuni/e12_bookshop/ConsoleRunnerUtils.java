@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -140,6 +141,20 @@ public class ConsoleRunnerUtils {
     }
 
 
+    // EXCERCISE 12
+    public void IncreaseBookCopies () {
+
+        Scanner scanner = new Scanner(System.in);
+
+        final String year = scanner.nextLine().replaceAll(" ", "-");
+        final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+
+        final int copies = Integer.parseInt(scanner.nextLine());
+
+
+        this.bookService.IncreaseBookCopies(LocalDate.parse(year, dateTimeFormatter), copies);
+
+    }
 
 
 

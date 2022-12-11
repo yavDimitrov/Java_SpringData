@@ -41,5 +41,7 @@ public interface BookService {
 
     int IncreaseBookCopies(LocalDate date, int copies);
 
+    int deleteAllByCopiesLessThan (Integer copies);
+
 
 }

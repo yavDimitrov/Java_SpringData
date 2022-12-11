@@ -105,5 +105,10 @@ public class BookServiceImpl implements BookService{
         return count;
     }
 
+    @Override
+    public int deleteAllByCopiesLessThan(Integer copies) {
+        return this.bookRepository.deleteAllByCopiesLessThan(copies);
+    }
+
 
 }

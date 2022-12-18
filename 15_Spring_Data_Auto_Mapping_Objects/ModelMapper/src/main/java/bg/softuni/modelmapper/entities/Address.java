@@ -8,8 +8,13 @@ public class Address {
 
     private String city;
 
-    public Address ()
-    {}
+    public Address () {}
+
+    public Address(long id, String country, String city) {
+        this.id = id;
+        this.country = country;
+        this.city = city;
+    }
 
     public Address(String country, String city) {
         this.country = country;

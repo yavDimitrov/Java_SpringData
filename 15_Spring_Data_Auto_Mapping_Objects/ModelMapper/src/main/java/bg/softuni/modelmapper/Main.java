@@ -4,6 +4,7 @@ import bg.softuni.modelmapper.entities.Address;
 import bg.softuni.modelmapper.entities.Employee;
 import bg.softuni.modelmapper.entities.dtos.EmployeeDTO;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -16,14 +17,21 @@ public class Main implements CommandLineRunner {
 
         ModelMapper mapper = new ModelMapper();
 
-        Address address = new Address("Bulgaria", "Sofia");
+        PropertyMap<Employee, EmployeeDTO> propertyMap = new PropertyMap<Employee, EmployeeDTO>() {
+            @Override
+            protected void configure() {
+                map().setCity(source.getAddress().getCity());
+            }
+        };
+        mapper.addMappings(propertyMap);
 
+
+        Address address = new Address("Bulgaria", "Sofia");
         Employee employee = new Employee("First", BigDecimal.TEN, address);
 
         EmployeeDTO employeeDTO = mapper.map(employee, EmployeeDTO.class);
 
-/*        EmployeeDTO employeeDTO ? */
+        System.out.println(employeeDTO);
 
-        System.out.println(employeeDTO.toString());
     }
 }

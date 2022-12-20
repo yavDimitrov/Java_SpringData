@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
-@Component
+//@Component
 public class ModelMapperMain implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {

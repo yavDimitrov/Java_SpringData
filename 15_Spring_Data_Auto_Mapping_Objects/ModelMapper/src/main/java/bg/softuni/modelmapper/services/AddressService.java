@@ -1,8 +1,8 @@
 package bg.softuni.modelmapper.services;
 
 import bg.softuni.modelmapper.entities.Address;
-import bg.softuni.modelmapper.entities.dtos.CreateAddressDTO;
+import bg.softuni.modelmapper.entities.dtos.AddressDTO;
 
 public interface AddressService {
-    Address create(CreateAddressDTO data);
+    Address create(AddressDTO data);
 }

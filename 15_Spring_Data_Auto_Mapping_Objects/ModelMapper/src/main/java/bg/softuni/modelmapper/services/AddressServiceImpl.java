@@ -1,7 +1,7 @@
 package bg.softuni.modelmapper.services;
 
 import bg.softuni.modelmapper.entities.Address;
-import bg.softuni.modelmapper.entities.dtos.CreateAddressDTO;
+import bg.softuni.modelmapper.entities.dtos.AddressDTO;
 import bg.softuni.modelmapper.repositories.AddressRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address create(CreateAddressDTO data) {
+    public Address create(AddressDTO data) {
         ModelMapper mapper = new ModelMapper();
 
         Address address = mapper.map(data, Address.class);

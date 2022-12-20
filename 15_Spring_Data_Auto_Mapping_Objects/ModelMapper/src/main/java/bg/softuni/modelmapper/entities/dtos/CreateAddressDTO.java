@@ -2,17 +2,18 @@ package bg.softuni.modelmapper.entities.dtos;
 
 public class CreateAddressDTO {
 
-    private String county;
+    private String country;
 
     private String city;
 
-    public CreateAddressDTO(String county, String city) {
-        this.county = county;
+    public CreateAddressDTO(String country, String city) {
+        this.country = country;
         this.city = city;
     }
 
-    public String getCounty() {
-        return county;
+
+    public String getCountry() {
+        return country;
     }
 
     public String getCity() {

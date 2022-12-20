@@ -23,7 +23,6 @@ public class AddressServiceImpl implements AddressService {
 
         Address address = mapper.map(data, Address.class);
 
-
         return this.addressRepository.save(address);
     }
 }

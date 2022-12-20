@@ -12,7 +12,7 @@ import java.util.Scanner;
 @Component
 public class AppMain implements CommandLineRunner {
 
-    private AddressService addressService;
+    private final AddressService addressService;
 
     @Autowired
     public AppMain(AddressService addressService) {

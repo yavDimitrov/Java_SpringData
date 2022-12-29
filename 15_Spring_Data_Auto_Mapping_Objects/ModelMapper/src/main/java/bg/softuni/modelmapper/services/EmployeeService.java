@@ -2,8 +2,12 @@ package bg.softuni.modelmapper.services;
 
 import bg.softuni.modelmapper.entities.Employee;
 import bg.softuni.modelmapper.entities.dtos.CreateEmployeeDTO;
-import org.modelmapper.ModelMapper;
+import bg.softuni.modelmapper.entities.dtos.EmployeeDTO;
+
+import java.util.List;
 
 public interface EmployeeService {
     Employee create(CreateEmployeeDTO employeeDTO);
+
+    List<EmployeeDTO> findAll();
 }

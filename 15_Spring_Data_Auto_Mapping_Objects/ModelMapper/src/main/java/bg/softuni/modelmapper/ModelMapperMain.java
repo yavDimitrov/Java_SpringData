@@ -6,7 +6,6 @@ import bg.softuni.modelmapper.entities.dtos.EmployeeDTO;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
@@ -36,7 +35,7 @@ public class ModelMapperMain implements CommandLineRunner {
 
         typeMap.addMappings(mappings -> mappings.map
                 (source -> source.getAddress().getCity(),
-                       EmployeeDTO::setCity));
+                       EmployeeDTO::setAddressCity));
 
 
 

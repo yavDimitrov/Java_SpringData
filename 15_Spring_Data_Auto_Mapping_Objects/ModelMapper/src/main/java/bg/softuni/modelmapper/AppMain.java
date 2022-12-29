@@ -6,6 +6,7 @@ import bg.softuni.modelmapper.entities.dtos.AddressDTO;
 import bg.softuni.modelmapper.entities.dtos.CreateEmployeeDTO;
 import bg.softuni.modelmapper.services.AddressService;
 import bg.softuni.modelmapper.services.EmployeeService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -20,10 +21,14 @@ public class AppMain implements CommandLineRunner {
     private final AddressService addressService;
     private final EmployeeService employeeService;
 
+    private final ModelMapper mapper;
+
     @Autowired
     public AppMain(AddressService addressService, EmployeeService employeeService) {
         this.addressService = addressService;
         this.employeeService = employeeService;
+
+        this.mapper = new ModelMapper();
     }
 
     @Override
@@ -32,7 +37,13 @@ public class AppMain implements CommandLineRunner {
 
     //    createAddress(scan);
 
-        createEmployee(scan);
+   //     createEmployee(scan);
+
+        printAllEmployees();
+    }
+
+    private void printAllEmployees() {
+        this.employeeService.findAll().forEach(System.out::println);
     }
 
     private void createEmployee(Scanner scan) {

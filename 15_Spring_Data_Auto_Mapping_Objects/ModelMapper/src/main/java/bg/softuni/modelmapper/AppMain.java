@@ -1,6 +1,7 @@
 package bg.softuni.modelmapper;
 
 import bg.softuni.modelmapper.entities.Address;
+import bg.softuni.modelmapper.entities.Employee;
 import bg.softuni.modelmapper.entities.dtos.AddressDTO;
 import bg.softuni.modelmapper.entities.dtos.CreateEmployeeDTO;
 import bg.softuni.modelmapper.services.AddressService;
@@ -20,8 +21,9 @@ public class AppMain implements CommandLineRunner {
     private final EmployeeService employeeService;
 
     @Autowired
-    public AppMain(AddressService addressService) {
+    public AppMain(AddressService addressService, EmployeeService employeeService) {
         this.addressService = addressService;
+        this.employeeService = employeeService;
     }
 
     @Override
@@ -47,8 +49,9 @@ public class AppMain implements CommandLineRunner {
 
         CreateEmployeeDTO employeeDTO = new CreateEmployeeDTO(firstName, null, salary, birthday, address);
 
-        this.employeeService.create(employeeDTO);
+        Employee employee = this.employeeService.create(employeeDTO);
 
+        System.out.println(employee);
 
 
     }

@@ -25,7 +25,7 @@ public class Employee {
     @Column(nullable = false)
     private LocalDate birthday;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.PERSIST)
     private Address address;
 
     public Employee () {}
@@ -82,5 +82,17 @@ public class Employee {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", salary=" + salary +
+                ", birthday=" + birthday +
+                ", address=" + address +
+                '}';
     }
 }

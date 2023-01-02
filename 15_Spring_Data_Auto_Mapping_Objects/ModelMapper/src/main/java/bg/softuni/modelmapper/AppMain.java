@@ -23,17 +23,20 @@ public class AppMain implements CommandLineRunner {
 
     private final ModelMapper mapper;
 
+    private final Scanner scan;
+
     @Autowired
-    public AppMain(AddressService addressService, EmployeeService employeeService) {
+    public AppMain(AddressService addressService, EmployeeService employeeService, Scanner scan) {
         this.addressService = addressService;
         this.employeeService = employeeService;
+        this.scan = scan;
 
         this.mapper = new ModelMapper();
     }
 
     @Override
     public void run(String... args) throws Exception {
-        Scanner scan = new Scanner(System.in);
+
 
     //    createAddress(scan);
 
@@ -46,7 +49,7 @@ public class AppMain implements CommandLineRunner {
         this.employeeService.findAll().forEach(System.out::println);
     }
 
-    private void createEmployee(Scanner scan) {
+    private void createEmployee() {
         String firstName = scan.nextLine();
         BigDecimal salary = new BigDecimal(scan.nextLine());
         LocalDate birthday = LocalDate.parse(scan.nextLine());
@@ -67,7 +70,7 @@ public class AppMain implements CommandLineRunner {
 
     }
 
-    private void createAddress(Scanner scan) {
+    private void createAddress() {
         String country = scan.nextLine();
         String city = scan.nextLine();
 

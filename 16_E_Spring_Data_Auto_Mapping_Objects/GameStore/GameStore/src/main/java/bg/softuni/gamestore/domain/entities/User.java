@@ -2,7 +2,6 @@ package bg.softuni.gamestore.domain.entities;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -17,11 +16,11 @@ public class User extends BaseEntity{
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
-    @ManyToMany
-    private Set<Games> games;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Game> games;
 
-    @OneToMany
-    private Set<Orders> orders;
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Order> orders;
 
     @Column
     private Boolean isAdmin;
@@ -63,11 +62,11 @@ public class User extends BaseEntity{
         this.fullName = fullName;
     }
 
-    public Set<Games> getGames() {
+    public Set<Game> getGames() {
         return games;
     }
 
-    public void setGames(Set<Games> games) {
+    public void setGames(Set<Game> games) {
         this.games = games;
     }
 

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table
+@Table(name = "games")
 public class Game extends BaseEntity{
 
     @Column(nullable = false)

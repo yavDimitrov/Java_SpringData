@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name = "users")
 public class User extends BaseEntity{
 
     @Column(nullable = false)

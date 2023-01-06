@@ -19,7 +19,7 @@ public class User extends BaseEntity{
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Game> games;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Order.class, mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Order> orders;
 
     @Column

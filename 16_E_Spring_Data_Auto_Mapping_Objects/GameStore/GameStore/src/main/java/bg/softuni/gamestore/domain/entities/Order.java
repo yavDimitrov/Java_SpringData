@@ -11,7 +11,7 @@ public class Order extends BaseEntity{
     @ManyToOne
     private User user;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(targetEntity = Game.class, fetch = FetchType.EAGER)
     private Set<Game> games;
 
     public Order() {

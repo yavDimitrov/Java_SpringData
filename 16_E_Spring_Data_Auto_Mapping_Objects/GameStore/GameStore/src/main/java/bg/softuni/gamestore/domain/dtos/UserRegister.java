@@ -1,5 +1,8 @@
 package bg.softuni.gamestore.domain.dtos;
 
+import bg.softuni.gamestore.domain.entities.User;
+import bg.softuni.gamestore.service.user.UserService;
+
 import java.util.regex.Pattern;
 
 import static bg.softuni.gamestore.constants.Validation.*;
@@ -70,6 +73,10 @@ public class UserRegister {
         if(!password.equals(confirmPassword)) {
             throw new IllegalArgumentException(PASSWORDS_MISS_MATCHING_MESSAGE);
         }
+    }
+
+    public User toUser () {
+        return new User(email, password, fullName);
     }
 
 }

@@ -1,5 +1,9 @@
 package bg.softuni.gamestore.domain.dtos;
 
+import java.util.regex.Pattern;
+
+import static bg.softuni.gamestore.constants.Validation.*;
+
 public class UserRegister {
     private String email;
 
@@ -14,6 +18,7 @@ public class UserRegister {
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.fullName = fullName;
+        validate();
     }
 
     public String getEmail() {
@@ -48,8 +53,23 @@ public class UserRegister {
         this.fullName = fullName;
     }
 
-    private void validate() {
-        
+    private void validate() throws IllegalArgumentException {
+
+        boolean isEmailValid = Pattern.matches(EMAIL_PATTERN, this.email);
+
+        if(!isEmailValid) {
+            throw new IllegalArgumentException(EMAIL_NOT_VALID_MESSAGE);
+        }
+
+        boolean isPasswordValid = Pattern.matches(PASSWORD_PATTERN, this.password);
+
+        if(!isPasswordValid) {
+            throw new IllegalArgumentException(USERNAME_OR_PASSWORD_NOT_VALID_MESSAGE);
+        }
+
+        if(!password.equals(confirmPassword)) {
+            throw new IllegalArgumentException(PASSWORDS_MISS_MATCHING_MESSAGE);
+        }
     }
 
 }

@@ -8,7 +8,7 @@ import java.util.Set;
 @Table(name = "orders")
 public class Order extends BaseEntity{
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private User user;
 
     @ManyToMany(targetEntity = Game.class, fetch = FetchType.EAGER)

@@ -1,6 +1,9 @@
 package com.example.football.service.impl;
 
+import com.example.football.models.entity.Town;
+import com.example.football.repository.TownRepository;
 import com.example.football.service.TownService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -8,10 +11,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class TownServiceImpl implements TownService {
 
+    private final TownRepository townRepository;
+
+    @Autowired
+    public TownServiceImpl(TownRepository townRepository) {
+        this.townRepository = townRepository;
+    }
 
     @Override
     public boolean areImported() {
-        return false;
+        return this.townRepository.count() > 0;
     }
 
     @Override

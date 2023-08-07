@@ -1,6 +1,7 @@
 package com.example.football.models.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="teams")
@@ -22,10 +23,35 @@ public class Team {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String history;
 
+    @ManyToOne(optional = false)
+    private Town town;
+
+    @OneToMany(targetEntity = Player.class, mappedBy = "team")
+    private Set<Player> players;
+
+    public Set<Player> getPlayers() {
+        return players;
+    }
+
+    public Team setPlayers(Set<Player> players) {
+        this.players = players;
+        return this;
+    }
+
+
    public Team () {}
 
     public long getId() {
         return id;
+    }
+
+    public Town getTown() {
+        return town;
+    }
+
+    public Team setTown(Town town) {
+        this.town = town;
+        return this;
     }
 
     public Team setId(long id) {

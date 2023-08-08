@@ -94,5 +94,10 @@ public class Team {
         this.history = history;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return name + " - " + fanBase;
+    }
 }
 

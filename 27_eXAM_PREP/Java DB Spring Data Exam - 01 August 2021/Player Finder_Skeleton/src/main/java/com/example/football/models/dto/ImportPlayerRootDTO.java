@@ -17,6 +17,9 @@ public class ImportPlayerRootDTO {
         this.players = players;
     }
 
+    public ImportPlayerRootDTO() {
+    }
+
     public List<ImportPlayerDTO> getPlayers() {
         return players;
     }

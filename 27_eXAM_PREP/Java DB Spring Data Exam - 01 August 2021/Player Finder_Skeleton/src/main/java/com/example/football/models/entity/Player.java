@@ -106,4 +106,19 @@ public class Player {
     public int hashCode() {
         return Objects.hash(id, email);
     }
+
+    public Player setTown(Town town) {
+        this.town = town;
+        return this;
+    }
+
+    public Player setTeam(Team team) {
+        this.team = team;
+        return this;
+    }
+
+    public Player setStat(Stat stat) {
+        this.stat = stat;
+        return this;
+    }
 }

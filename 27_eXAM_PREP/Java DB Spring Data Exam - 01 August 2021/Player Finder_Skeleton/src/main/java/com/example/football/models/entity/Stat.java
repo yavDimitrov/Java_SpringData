@@ -52,4 +52,11 @@ public class Stat {
         this.endurance = endurance;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return passing + " - " +
+                shooting + " - " +
+                endurance;
+    }
 }
